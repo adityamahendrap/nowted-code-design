@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { storeToRefs } from 'pinia';
 import { useNotesStore } from '@/stores/notes';
 const store = useNotesStore()
@@ -12,6 +12,7 @@ const handleSelectNoteInSearchResult = (title, folder) => {
   store.resetMore()
   search.value = ''
 }
+
 </script>
 
 <template>
@@ -22,13 +23,17 @@ const handleSelectNoteInSearchResult = (title, folder) => {
       type="text"
       placeholder="Search anything here..."
     />
-    <ul class="absolute z-50 mt-2 overflow-hidden rounded-lg bg-[#1c1c1c] py-2">
-      <template v-for="note in filterNotesByTitle(search)" :key="note.date">
+    <ul 
+      class="absolute z-50 mt-2 overflow-hidden rounded-lg bg-[#333333]" 
+      style="width: 100%;"
+      :class="filterNotesByTitle(search)?.length ? 'py-2' : ''"
+    >
+      <template v-for="(note, index) in filterNotesByTitle(search)" :key="index">
         <li
+          v-if="index < 5"
           @click="handleSelectNoteInSearchResult(note.title, note.folder)"
-          class="min-w-[200px] cursor-pointer overflow-hidden bg-[#1c1c1c] px-4 py-1 text-white/50 hover:text-white/70"
-        >
-          {{ note.title }}
+          class="w-full cursor-pointer overflow-hidden bg-[##333333] px-4 py-1 text-white/50 hover:text-white/70"        >
+          {{ note?.title }}
         </li>
       </template>
     </ul>
