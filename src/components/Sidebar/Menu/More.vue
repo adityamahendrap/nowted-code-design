@@ -3,17 +3,17 @@ const more = ref([
   {
     name: "Favorites",
     isActive: false,
-    icon: "/src/assets/Images/favorites-icon.svg",
+    icon: "/src/assets/images/favorites-icon.svg",
   },
   {
     name: "Trash",
     isActive: false,
-    icon: "/src/assets/Images/trash-icon.svg",
+    icon: "/src/assets/images/trash-icon.svg",
   },
   {
     name: "Archived Notes",
     isActive: false,
-    icon: "/src/assets/Images/archived-notes-icon.svg",
+    icon: "/src/assets/images/archived-notes-icon.svg",
   },
 ]);
 
