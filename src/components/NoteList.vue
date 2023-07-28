@@ -107,7 +107,7 @@ const sortParams = ref({
     <template v-else>
       <div class="flex h-full flex-col items-center justify-center">
         <div>
-          <i class="fa-solid fa-lemon fa-2xl"></i>
+          <i class="fa-solid fa-lemon fa-2xl text-white/60"></i>
         </div>
         <h1 class="mt-2 max-w-[200px] text-center text-white opacity-50">
           Select a folder to view note list

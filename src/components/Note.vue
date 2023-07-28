@@ -56,7 +56,7 @@ export default {
         </div>
         <div class="mt-8 flex">
           <div class="my-auto mr-4">
-            <img src="@/assets/images/date-icon.svg" alt="Date Icon" />
+            <i class="fa-solid fa-calendar-days fa-lg text-white/60"></i>
           </div>
           <div class="w-32 text-white/60">Date</div>
           <div class="relative">
@@ -68,10 +68,7 @@ export default {
         <hr class="mt-4 opacity-10" />
         <div class="mt-4 flex">
           <div class="my-auto mr-4">
-            <img
-              src="@/assets/images/folder-unactive-icon.svg"
-              alt="Folder Icon"
-            />
+            <i class="fa-regular fa-folder fa-lg text-white/60"></i>
           </div>
           <div class="w-32 text-white/60">Folder</div>
           <Dropdown 
