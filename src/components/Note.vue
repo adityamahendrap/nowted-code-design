@@ -38,7 +38,7 @@ export default {
 </script>
 
 <template>
-  <main class="w-full overflow-y-scroll">
+  <main class="w-full overflow-y-scroll hide-scrollbar">
     <template v-if="activeNote.length">
       <section class="px-12 py-14">
         <div class="flex justify-between">
@@ -112,5 +112,9 @@ main {
 
 textarea {
   resize: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 </style>
