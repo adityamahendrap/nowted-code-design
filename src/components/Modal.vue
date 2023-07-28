@@ -146,6 +146,7 @@ const handleBtnAction = () => {
                     type="text"
                     class="mt-2 w-full border-b-2 border-white/20 bg-transparent py-2 text-white/60 placeholder:text-white/60 focus:outline-none"  
                     placeholder="Type here..."
+                    @keydown.enter="handleBtnAction()"
                   >
                 </div>
   
