@@ -116,15 +116,11 @@ const sortParams = ref({
         class="flex cursor-pointer justify-between gap-6 px-6 py-2"
         :class="folder.isActive ? 'bg-white/5 text-white' : ''"
       >
-        <div class="my-auto w-5 h-5 flex-shrink-0">
-          <img
-            class="w-full h-full"
-            :src="
-              folder.isActive
-                ? '@/assets/images/folder-active-icon.svg'
-                : '@/assets/images/folder-unactive-icon.svg'
-            "
-          />
+        <div class="my-auto w-5 h-5 flex-shrink-0 flex items-center">
+          <i 
+            :class="!folder.isActive ? 'fa-folder' : 'fa-folder-open'"
+            class="fa-regular fa-lg text-white/60"
+          ></i>
         </div>
         <div
           @click="store.selectFolder(folder.name)"

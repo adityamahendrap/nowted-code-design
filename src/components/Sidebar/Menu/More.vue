@@ -3,17 +3,17 @@ const more = ref([
   {
     name: "Favorites",
     isActive: false,
-    icon: "/src/assets/images/favorites-icon.svg",
+    icon: "fa-regular fa-star",
   },
   {
     name: "Trash",
     isActive: false,
-    icon: "/src/assets/images/trash-icon.svg",
+    icon: "fa-solid fa-trash",
   },
   {
     name: "Archived Notes",
     isActive: false,
-    icon: "/src/assets/images/archived-notes-icon.svg",
+    icon: "fa-solid fa-box-archive",
   },
 ]);
 
@@ -53,7 +53,12 @@ const toggleMore = ref(true)
               : 'cursor-not-allowed opacity-50'
           "
         >
-          <div class="my-auto"><img :src="e.icon" /></div>
+          <div class="my-auto">
+            <i
+              :class="e.icon"
+              class="text-white/50 fa-lg"
+            ></i>
+          </div>
           <div class="line-clamp-1">{{ e.name }}</div>
         </button>
       </template>
