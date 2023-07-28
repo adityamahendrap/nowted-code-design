@@ -24,7 +24,7 @@ const handleDeleteNote = (title, folder) => {
 <template>
   <Menu as="div" class="relative inline-block text-left">
     <MenuButton class="flex bg-transparent text-white underline">
-      <img src="src/assets/images/ellipsis-icon.svg" alt="Ellipsis Icon" />
+      <img src="/src/assets/images/ellipsis-icon.svg" alt="Ellipsis Icon" />
     </MenuButton>
 
     <transition
@@ -44,7 +44,7 @@ const handleDeleteNote = (title, folder) => {
         >
           <div class="row flex gap-x-2 hover:text-white/40">
             <img
-              src="src/assets/images/favorites-white-icon.svg"
+              src="/src/assets/images/favorites-white-icon.svg"
               class="row-img"
             />
             {{ isNoteFavorited(activeNote[0].title) ? 'Unfavorite' : 'Add to favorites' }}
@@ -55,7 +55,7 @@ const handleDeleteNote = (title, folder) => {
           class="cursor-pointer px-3 py-2"
         >
           <div class="row flex gap-x-2 hover:text-white/40">
-            <img src="src/assets/images/trash-white-icon.svg" class="row-img" />
+            <img src="/src/assets/images/trash-white-icon.svg" class="row-img" />
             Delete
           </div>
         </MenuItem>

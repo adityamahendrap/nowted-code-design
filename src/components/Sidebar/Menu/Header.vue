@@ -30,14 +30,14 @@ const handleCreateNote = (folder) => {
       <div>
         <img
           class="hover:cursor-pointer"
-          src="src/assets/images/nowted-logo.svg"
+          src="/src/assets/images/nowted-logo.svg"
           alt="Nowted"
         />
       </div>
       <div class="my-auto">
         <img
           class="cursor-pointer"
-          src="src/assets/images/search-icon.svg"
+          src="/src/assets/images/search-icon.svg"
           alt="Search Icon"
           @click="searchToggle"
         />

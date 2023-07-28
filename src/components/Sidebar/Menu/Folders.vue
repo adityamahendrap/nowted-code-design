@@ -121,8 +121,8 @@ const sortParams = ref({
             class="w-full h-full"
             :src="
               folder.isActive
-                ? 'src/assets/images/folder-active-icon.svg'
-                : 'src/assets/images/folder-unactive-icon.svg'
+                ? '/src/assets/images/folder-active-icon.svg'
+                : '/src/assets/images/folder-unactive-icon.svg'
             "
           />
         </div>

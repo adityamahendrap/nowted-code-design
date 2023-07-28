@@ -21,7 +21,7 @@ const variants = {
              ${variants.position['center']}`"
   >
     <div class="my-auto">
-      <img src="src/assets/images/plus-icon.svg" alt="Plus Icon" />
+      <img src="/src/assets/images/plus-icon.svg" alt="Plus Icon" />
     </div>
     <span>{{ text }}</span>
   </button>

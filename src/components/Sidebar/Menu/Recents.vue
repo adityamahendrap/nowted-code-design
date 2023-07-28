@@ -36,7 +36,7 @@ const counter = ref(0)
               class="my-auto w-5 h-5 flex-shrink-0"
               :class="!recent.isActive ? 'opacity-60' : ''"
             >
-              <img class="w-full h-full" src="src/assets/images/document-icon.svg" alt="Document Icon" />
+              <img class="w-full h-full" src="/src/assets/images/document-icon.svg" alt="Document Icon" />
             </div>
             <h1 class="truncate">
               {{ recent.title == "" ? "Untitled Note" : recent.title }}

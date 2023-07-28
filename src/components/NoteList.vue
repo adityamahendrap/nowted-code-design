@@ -108,7 +108,6 @@ const sortParams = ref({
       <div class="flex h-full flex-col items-center justify-center">
         <div>
           <i class="fa-solid fa-lemon fa-2xl"></i>
-          <!-- <img class="w-full h-full" src="src/assets/images/folder-active-icon.svg" /> -->
         </div>
         <h1 class="mt-2 max-w-[200px] text-center text-white opacity-50">
           Select a folder to view note list
