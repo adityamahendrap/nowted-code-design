@@ -10,14 +10,29 @@ const { activeNote } = storeToRefs(store)
 </script>
 
 <script>
+import { mapStores, mapState } from 'pinia';
+
 export default {
+  computed: {
+    ...mapStores(useNotesStore),
+    ...mapState(useNotesStore, ['activeNote']),
+  },
   methods: {
     resize() {
       let element = this.$refs["textarea"];
 
-      element.style.height = "18px";
-      element.style.height = element.scrollHeight + "px";
+      if (element instanceof HTMLTextAreaElement) {
+        element.style.height = "18px";
+        element.style.height = element.scrollHeight + "px";
+      }
     },
+  },
+  watch: {
+    activeNote() {
+      this.$nextTick(() => {
+        this.resize();
+      });
+    }
   }
 }
 </script>
@@ -31,8 +46,9 @@ export default {
             type="text"
             maxlength="50"
             class="w-full bg-transparent pr-10 text-3xl font-semibold focus:outline-none"
-            v-model="activeNote[0].title"
             placeholder="Note Title"
+            v-model="activeNote[0].title"
+            @input="store.changeNoteTitle(activeNote[0].date, activeNote[0].title)"
           />
           <div>
             <DropdownEllipsis/>
@@ -63,11 +79,11 @@ export default {
             :noteTitle="activeNote[0].title"
           />
         </div>
-        <textarea
-          @input="resize()" 
+        <textarea 
           ref="textarea"
           class="mt-8 w-full bg-transparent focus:outline-none"
           v-model="activeNote[0].content"
+          @input="resize(); store.changeNoteContent(activeNote[0].date, activeNote[0].content)"
           placeholder="Type something here..."
         ></textarea>
       </section>

@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
+const ls = window.localStorage;
 
 export const useNotesStore = defineStore("notes", () => {
   const data = ref({
@@ -7,18 +8,18 @@ export const useNotesStore = defineStore("notes", () => {
       {
         name: "Personal",
         isActive: false,
-        date: 1680612856803,
+        date: 0,
       },
       {
         name: "Bussiness",
         isActive: false,
-        date: 1680612856803,
+        date: 1,
       },
     ],
     notes: [
       {
         title: "Awesome Note",
-        date: 1680612856811,
+        date: 0,
         folder: "Personal",
         content: "Hello World",
         isActive: false,
@@ -26,7 +27,7 @@ export const useNotesStore = defineStore("notes", () => {
       },
       {
         title: "Hellow",
-        date: 1680612856899,
+        date: 1,
         folder: "Personal",
         content: "Hello World",
         isActive: false,
@@ -34,7 +35,7 @@ export const useNotesStore = defineStore("notes", () => {
       },
       {
         title: "Wut",
-        date: 1680612856855,
+        date: 2,
         folder: "Bussiness",
         content: "Hello World",
         isActive: false,
@@ -60,6 +61,11 @@ export const useNotesStore = defineStore("notes", () => {
     ],
   });
   const activeMore = ref('')
+
+  onMounted(() => {
+    const lsData = ls.getItem('data')
+    if(lsData) data.value = JSON.parse(lsData)
+  })
 
   // getters
   const countNotes = computed(() => data.value.notes.length);
@@ -114,24 +120,35 @@ export const useNotesStore = defineStore("notes", () => {
   });
 
   // actions
+  const saveData = () => {
+    const dataToSave = JSON.parse(JSON.stringify(data.value))
+
+    // unactivate note
+    const noteActiveIndex = dataToSave.notes.map(note => note.isActive).indexOf(true)
+    if(noteActiveIndex != -1) dataToSave.notes[noteActiveIndex].isActive = false
+    // unactivate folder
+    const folderActiveIndex = dataToSave.folders.map(folder => folder.isActive).indexOf(true)
+    if(folderActiveIndex != -1) dataToSave.folders[folderActiveIndex].isActive = false
+
+    ls.setItem('data', JSON.stringify(dataToSave))
+  }
+
   const createFolder = (newFolderName) => {
-    // check is name exist
     const isFolderNameExist = data.value.folders.map((folder) => folder.name).includes(newFolderName);
     if (isFolderNameExist) return alert(`Folder with name '${newFolderName}' already exist`);
 
     data.value.folders.push({ 
       name: newFolderName, 
       isActive: false, 
-      date: new Date() 
+      date: Date.now() 
     });
-    // alert("Folder created");
+
+    saveData()
   };
 
   const renameFolder = (oldName, newName) => {
-    // check is newName equal oldName
     if (oldName === newName) return alert("Cannot rename same folder name");
 
-    // check is newName exist
     const isNewNameExist = data.value.folders.map((folder) => folder.name).includes(newName);
     if (isNewNameExist) return alert(`Folder with name '${newName}' already exist`);
 
@@ -143,21 +160,24 @@ export const useNotesStore = defineStore("notes", () => {
         note.folder = newName
       }
     });
+
+    saveData()
   };
 
   const createNote = (title, folder) => {
-    // check title exist or not
     const isTitleExist = data.value.notes.map((note) => note.title).includes(title);
     if (isTitleExist) return alert(`Note with title ${title} already exist`);
 
     data.value.notes.push({
       title,
-      date: new Date(),
+      date: Date.now(),
       folder,
       content: '',
       isActive: false,
       isFavorited: false,
     });
+
+    saveData()
   };
 
   const deleteNote = (title) => {
@@ -167,7 +187,23 @@ export const useNotesStore = defineStore("notes", () => {
       notes,
       more: data.value.more,
     };
+
+    saveData()
   };
+
+  const changeNoteTitle = (date, newTitle) => {
+    const noteIndex = data.value.notes.map(note => note.date).indexOf(date)
+    data.value.notes[noteIndex].title = newTitle
+
+    saveData()
+  }
+  
+  const changeNoteContent = (date, newContent) => {
+    const noteIndex = data.value.notes.map(note => note.date).indexOf(date)
+    data.value.notes[noteIndex].content = newContent
+
+    saveData()
+  }
 
   const deleteFolder = (name) => {
     const folders = data.value.folders.filter((folder) => folder.name != name);
@@ -177,11 +213,15 @@ export const useNotesStore = defineStore("notes", () => {
       notes,
       more: data.value.more,
     };
+
+    saveData()
   };
 
   const changeNoteFolder = (title, folder) => {
     const noteIndex = data.value.notes.map(note => note.title).indexOf(title)
     data.value.notes[noteIndex].folder = folder
+
+    saveData()
   }
 
   const toggleFavorite = (title) => {
@@ -191,6 +231,8 @@ export const useNotesStore = defineStore("notes", () => {
     // if(activeMore.value == 'Favorites') {
     //   unactivateNote(title)
     // }
+
+    saveData()
   }
 
   const unactivateNote = () => {
@@ -271,6 +313,8 @@ export const useNotesStore = defineStore("notes", () => {
     changeNoteFolder,
     resetMore,
     foldersWithSort,
-    notesInFolder_
+    notesInFolder_,
+    changeNoteTitle,
+    changeNoteContent
   };
 });
