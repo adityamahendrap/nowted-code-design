@@ -56,7 +56,7 @@ export default {
         </div>
         <div class="mt-8 flex">
           <div class="my-auto mr-4">
-            <img src="/src/assets/images/date-icon.svg" alt="Date Icon" />
+            <img src="@/assets/images/date-icon.svg" alt="Date Icon" />
           </div>
           <div class="w-32 text-white/60">Date</div>
           <div class="relative">
@@ -69,7 +69,7 @@ export default {
         <div class="mt-4 flex">
           <div class="my-auto mr-4">
             <img
-              src="/src/assets/images/folder-unactive-icon.svg"
+              src="@/assets/images/folder-unactive-icon.svg"
               alt="Folder Icon"
             />
           </div>
