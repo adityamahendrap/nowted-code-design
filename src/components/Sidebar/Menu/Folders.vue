@@ -116,8 +116,9 @@ const sortParams = ref({
         class="flex cursor-pointer justify-between gap-6 px-6 py-2"
         :class="folder.isActive ? 'bg-white/5 text-white' : ''"
       >
-        <div class="my-auto block w-2/12">
+        <div class="my-auto w-5 h-5 flex-shrink-0">
           <img
+            class="w-full h-full"
             :src="
               folder.isActive
                 ? 'src/assets/images/folder-active-icon.svg'

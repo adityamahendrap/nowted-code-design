@@ -26,22 +26,22 @@ const counter = ref(0)
           v-for="(recent, index) in recentNotes"
           :key="index"
         >
-          <div
+          <button
             v-if="index < 3"
-            class="flex cursor-pointer gap-6 px-6 py-2"
+            class="flex gap-6 px-6 w-full py-2"
             :class="recent.isActive ? 'bg-blue-800 text-white' : ''"
             @click="store.selectNote(recent.title, recent.folder)"
           >
             <div
-              class="my-auto w-2/12"
+              class="my-auto w-5 h-5 flex-shrink-0"
               :class="!recent.isActive ? 'opacity-60' : ''"
             >
-              <img src="src/assets/images/document-icon.svg" alt="Document Icon" />
+              <img class="w-full h-full" src="src/assets/images/document-icon.svg" alt="Document Icon" />
             </div>
-            <h1 class="w-full truncate">
+            <h1 class="truncate">
               {{ recent.title == "" ? "Untitled Note" : recent.title }}
             </h1>
-          </div>
+          </button>
         </template>
         <h1 v-if="!recentNotes.length" class="text-center text-sm text-white/60">~ Empty ~</h1>
       </template>
