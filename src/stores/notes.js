@@ -46,17 +46,17 @@ export const useNotesStore = defineStore("notes", () => {
       {
         name: "Favorites",
         isActive: false,
-        icon: "/src/assets/images/favorites-icon.svg",
+        icon: "@/assets/images/favorites-icon.svg",
       },
       {
         name: "Trash",
         isActive: false,
-        icon: "/src/assets/images/trash-icon.svg",
+        icon: "@/assets/images/trash-icon.svg",
       },
       {
         name: "Archived Notes",
         isActive: false,
-        icon: "/src/assets/images/archived-notes-icon.svg",
+        icon: "@/assets/images/archived-notes-icon.svg",
       },
     ],
   });
