@@ -56,7 +56,7 @@ export default {
         </div>
         <div class="mt-8 flex">
           <div class="my-auto mr-4">
-            <img src="/src/assets/images/date-icon.svg" alt="Date Icon" />
+            <img src="@/assets/images/date-icon.svg" alt="Date Icon" />
           </div>
           <div class="w-32 text-white/60">Date</div>
           <div class="relative">
@@ -69,7 +69,7 @@ export default {
         <div class="mt-4 flex">
           <div class="my-auto mr-4">
             <img
-              src="/src/assets/images/folder-unactive-icon.svg"
+              src="@/assets/images/folder-unactive-icon.svg"
               alt="Folder Icon"
             />
           </div>
@@ -91,7 +91,7 @@ export default {
     <template v-else>
       <section class="flex h-full items-center justify-center px-12 py-14">
         <div class="flex flex-col items-center justify-center text-center">
-          <div><img src="/src/assets/images/note.svg" /></div>
+          <div><img src="@/assets/images/note.svg" /></div>
           <h1 class="mt-3 text-2xl font-semibold">Select a note to view</h1>
           <p class="mt-3 max-w-lg text-white/50">
             Choose a note from the list on the left to view its contents, or
